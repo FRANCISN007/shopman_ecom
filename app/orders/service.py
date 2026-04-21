@@ -395,6 +395,9 @@ from datetime import datetime, date
 def convert_order_to_sale(db: Session, order_id: int, current_user):
 
     try:
+        # ───────────────────────────────
+        # 1. GET ORDER
+        # ───────────────────────────────
         order = get_order(db, order_id, current_user)
 
         if not order:
@@ -403,9 +406,9 @@ def convert_order_to_sale(db: Session, order_id: int, current_user):
         if order.is_converted:
             raise HTTPException(400, "Order already converted")
 
-        # -----------------------------
-        # BUILD SALE ITEMS
-        # -----------------------------
+        # ───────────────────────────────
+        # 2. BUILD SALE ITEMS
+        # ───────────────────────────────
         sale_items = [
             {
                 "product_id": item.product_id,
@@ -416,9 +419,10 @@ def convert_order_to_sale(db: Session, order_id: int, current_user):
             for item in order.items
         ]
 
-        # -----------------------------
-        # CREATE SALE DATA
-        # -----------------------------
+        # ───────────────────────────────
+        # 3. CREATE SALE
+        # (IMPORTANT: this already deducts stock)
+        # ───────────────────────────────
         sale_data = SaleFullCreate(
             invoice_date=date.today(),
             customer_name=order.customer_name,
@@ -427,9 +431,6 @@ def convert_order_to_sale(db: Session, order_id: int, current_user):
             items=sale_items
         )
 
-        # -----------------------------
-        # CREATE SALE (handles stock deduction)
-        # -----------------------------
         created_sale = create_sale_full(
             db=db,
             sale_data=sale_data,
@@ -437,13 +438,26 @@ def convert_order_to_sale(db: Session, order_id: int, current_user):
             business_id=order.business_id,
         )
 
-        # ✅ ADD THIS HERE (IMPORTANT)
-        order.sale_id = created_sale.id
+        # ───────────────────────────────
+        # 4. FIX RESERVED STOCK ONLY (NO DOUBLE DEDUCTION)
+        # ───────────────────────────────
+        for item in order.items:
 
-        # -----------------------------
-        # ONLY MARK ORDER CLOSED
-        # -----------------------------
-        order.sale_id = created_sale.id   # ✅ THIS is correct
+            # release reserved stock ONLY
+            release_stock(
+                db=db,
+                product_id=item.product_id,
+                quantity=item.quantity,
+                current_user=current_user
+            )
+
+            # ❌ REMOVE confirm_stock (it causes DOUBLE deduction)
+            # inventory_service.confirm_stock(...)
+
+        # ───────────────────────────────
+        # 5. LINK ORDER TO SALE
+        # ───────────────────────────────
+        order.sale_id = created_sale.id
         order.is_converted = True
         order.status = "completed"
         order.payment_status = "unpaid"
@@ -464,8 +478,6 @@ def convert_order_to_sale(db: Session, order_id: int, current_user):
     except Exception as e:
         db.rollback()
         raise HTTPException(500, f"Conversion failed: {str(e)}")
-
-
 
 
 def delete_order(db: Session, order_id: int, current_user):

@@ -1649,6 +1649,9 @@ def delete_sale(
     current_user: UserDisplaySchema
 ) -> bool:
 
+    # ───────────────────────────────
+    # 1. FETCH SALE (TENANT SAFE)
+    # ───────────────────────────────
     sale_query = db.query(models.Sale)
 
     if "super_admin" not in current_user.roles:
@@ -1670,38 +1673,46 @@ def delete_sale(
         return False
 
     # ───────────────────────────────
-    # FIND ORDER (FIXED)
+    # 2. FIND RELATED ORDER
     # ───────────────────────────────
-    
+    order = db.query(Order).filter(
+        Order.sale_id == sale.id
+    ).first()
 
-    order = db.query(Order).filter(Order.sale_id == sale.id).first()
-
-    
     # ───────────────────────────────
-    # RESTORE STOCK
+    # 3. REVERSE SALE STOCK IMPACT
     # ───────────────────────────────
     for item in sale.items:
-        inventory_service.add_stock(
+
+        inventory = inventory_service.revert_stock(
             db=db,
             product_id=item.product_id,
             quantity=item.quantity,
             current_user=current_user,
-            commit=False
+            source="sale"
         )
 
+        # 🔥 ENSURE CONSISTENT STOCK CALCULATION
+        if inventory:
+            inventory.current_stock = inventory_service.calculate_current_stock(inventory)
+
     # ───────────────────────────────
-    # RESET ORDER STATUS
+    # 4. RESET ORDER (IF LINKED)
     # ───────────────────────────────
     if order:
         order.status = "pending"
         order.is_converted = False
         order.payment_status = "unpaid"
+        order.sale_id = None  # 🔥 IMPORTANT: break link cleanly
 
     # ───────────────────────────────
-    # DELETE SALE
+    # 5. DELETE SALE
     # ───────────────────────────────
     db.delete(sale)
 
+    # ───────────────────────────────
+    # 6. COMMIT SAFELY
+    # ───────────────────────────────
     try:
         db.commit()
         return True
