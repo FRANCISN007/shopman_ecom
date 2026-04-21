@@ -1,0 +1,268 @@
+.list-container {
+  position: relative; 
+  padding: 4px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.list-container h2 {
+  text-align: center;
+  margin-bottom: 4px; 
+  font-size: 1.2rem;  
+}
+
+/* Table */
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.list-table tbody tr:nth-child(odd) {
+  background-color: #e6f4ea;
+}
+
+.list-table tbody tr:nth-child(even) {
+  background-color: #f0faf5;
+}
+
+.list-table th,
+.list-table td {
+  padding: 2px 8px; 
+  text-align: left;
+  font-size: 0.78rem;
+  border: 1px solid #28a745;
+  line-height: 1.4;
+}
+
+.list-table th {
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.actions button {
+  padding: 2px 4px; 
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.edit-btn {
+  background-color: #b9cee6;
+  color: #0b3c5d;
+}
+
+.delete-btn {
+  background-color: #e7cfce;
+  color: #7a1c1c;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #ece6e6;
+  padding: 12px 14px;
+  border-radius: 6px;
+  min-width: 320px;
+  max-width: 360px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.modal h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.modal .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.modal .form-group label {
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 0.75rem;
+}
+
+.modal .form-group input,
+.modal .form-group select {
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 5px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 2px 4px;
+  background-color: #f0e9e9;
+  border: 1px solid #0ae63d;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+
+.filter-input,
+.filter-select {
+  padding: 4px 6px;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  min-width: 90px;
+  height: 25px;
+  transition: 0.2s all ease-in-out;
+  box-sizing: border-box;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.3);
+}
+
+.filter-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 500px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+  }
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 28px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #a71d2a;
+}
+
+/* Dropdown for product search in edit modal */
+.search-dropdown {
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  background: #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.search-dropdown li {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.search-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* ===== Filters + Summary Row ===== */
+.filters-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 12px;
+}
+
+/* Keep existing filters layout */
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== Product Summary Box ===== */
+.product-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.product-summary span {
+  color: #555;
+}
+
+.product-summary strong {
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+}

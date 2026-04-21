@@ -1,0 +1,321 @@
+/* ===============================
+   Container
+=============================== */
+.sales-payment-container {
+  position: relative;
+  padding: 4px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* ===============================
+   Title
+=============================== */
+.sales-payment-title {
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* ===============================
+   Filters
+=============================== */
+.sales-payment-filters {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sales-payment-filters label {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.sales-payment-filters input[type="date"],
+.sales-payment-filters select {
+  padding: 3px 5px;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.sales-payment-filters button {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sales-payment-filters button:hover {
+  opacity: 0.9;
+}
+
+/* ===============================
+   Table Wrapper
+=============================== */
+.sales-payment-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* ===============================
+   Table
+=============================== */
+.sales-payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+/* Cells */
+.sales-payment-table th,
+.sales-payment-table td {
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  line-height: 1.15;
+  text-align: left;
+  border: 1px solid #28a745;
+  white-space: nowrap;
+}
+
+/* Header */
+.sales-payment-table th {
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+  padding: 3px 5px;
+}
+
+/* Zebra rows */
+.sales-payment-table tbody tr:nth-child(odd) {
+  background-color: #eaf6ee;
+}
+
+.sales-payment-table tbody tr:nth-child(even) {
+  background-color: #f4fbf7;
+}
+
+/* Empty row */
+.sales-payment-empty-row {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 6px 0;
+}
+
+/* ===============================
+   Status / Error
+=============================== */
+.sales-payment-status-text,
+.sales-payment-error-text {
+  font-weight: 600;
+  margin: 4px 0;
+  font-size: 0.75rem;
+}
+
+.sales-payment-error-text {
+  color: #dc3545;
+}
+
+/* ===============================
+   Close Button
+=============================== */
+.sales-payment-close-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  font-size: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.sales-payment-close-btn:hover {
+  background: #c82333;
+}
+
+/* ===============================
+   Delete Icon
+=============================== */
+.delete-icon-btn {
+  background: none;
+  
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8;
+}
+
+.delete-icon-btn:hover {
+  background: #a14952;
+  transform: scale(1.15);
+}
+
+
+
+.edit-icon-btn {
+  background: none;
+  
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8;
+}
+
+.edit-icon-btn:hover {
+  background: #645a99;
+  transform: scale(1.15);
+}
+
+
+/* ===============================
+   TOTAL ROW (Emphasized)
+=============================== */
+.sales-total-row {
+  font-weight: bold;
+  background-color: #dff3e4;
+}
+
+.sales-total-row td {
+  font-size: 0.9rem;     /* bigger than normal rows */
+  padding: 4px 6px;     /* slightly more breathing space */
+}
+
+/* Emphasize amount columns more */
+.sales-total-row td:nth-child(4),
+.sales-total-row td:nth-child(5),
+.sales-total-row td:nth-child(6) {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #d32323;
+}
+
+
+
+
+/* ===============================
+   Edit Modal Overlay
+=============================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ===============================
+   Modal Box
+=============================== */
+.modal {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 4px;
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Modal Title */
+.modal h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Modal Form Labels and Inputs */
+.edit-form label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.edit-form input,
+.edit-form select {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   Modal Buttons Container
+=============================== */
+/* Modal Buttons Container */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Save Button */
+.modal-actions button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-actions button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* Cancel Button for modal */
+.modal-cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-cancel-btn:hover {
+  opacity: 0.9;
+}

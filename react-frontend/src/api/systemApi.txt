@@ -1,0 +1,122 @@
+import axios from "axios";
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || `http://${window.location.hostname}:8000`;
+
+export const updateApp = async () => {
+  const response = await axios.post(`${API_BASE_URL}/system/update-app`);
+  return response.data;
+};
+
+
+
+
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/images/phoneshop.png";
+import { checkLicenseStatus } from "../api/licenseApi";
+import { SHOP_NAME } from "../config/constants";
+import "./HomePage.css";
+
+const HomePage = () => {
+  const navigate = useNavigate();
+  const [licenseStatus, setLicenseStatus] = useState("loading"); 
+  // loading | valid | invalid
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const verifyLicense = async () => {
+      try {
+        const res = await checkLicenseStatus();
+
+        if (!isMounted) return;
+
+        if (res && res.valid === true) {
+          setLicenseStatus("valid");
+        } else {
+          setLicenseStatus("invalid");
+        }
+      } catch (error) {
+        console.error("License check failed:", error);
+        if (isMounted) {
+          setLicenseStatus("invalid");
+        }
+      }
+    };
+
+    verifyLicense();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleProceed = () => {
+    if (licenseStatus === "valid") {
+      navigate("/login", { replace: true });
+    } else {
+      navigate("/license", { replace: true });
+    }
+  };
+
+  return (
+    <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap"
+        rel="stylesheet"
+      />
+
+      <div
+        className="home-container"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* App Name */}
+        <div className="hotel-name-banner">{SHOP_NAME}</div>
+
+        {/* Main Card */}
+        <div className="home-card">
+          <div className="hems-text">
+            <span className="hems-letter">SH</span>
+            <span className="hems-letter">op</span>
+            <span className="hems-letter">M</span>
+            <span className="hems-letter">an</span>
+          </div>
+
+          <button
+            className="proceed-button"
+            onClick={handleProceed}
+            disabled={licenseStatus === "loading"}
+          >
+            {licenseStatus === "loading"
+              ? "Checking License..."
+              : licenseStatus === "valid"
+              ? "Proceed to Login >>"
+              : "Activate License >>"}
+          </button>
+        </div>
+
+        {/* Footer */}
+        <footer className="home-footer">
+          <div>Produced & Licensed by School of Accounting Package</div>
+          <div>© 2025</div>
+        </footer>
+      </div>
+    </>
+  );
+};
+
+export default HomePage;

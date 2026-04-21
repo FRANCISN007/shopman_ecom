@@ -1,0 +1,361 @@
+/* ===============================
+   TOP MENU CONTAINER
+================================ */
+
+.top-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  padding: 10px 14px;
+  background: #000000;
+  border-bottom: 2px solid #8a94a6;
+  flex-shrink: 0; /* keep menu fixed */
+}
+
+/* ===============================
+   MENU CARD (BUTTON STYLE)
+================================ */
+.menu-card {
+  min-width: 100px;   /* ⬅ reduced */
+  height: 65px;       /* ⬅ reduced */
+  border: 2px solid #687e9c;
+  border-radius: 10px; /* slightly tighter */
+  background: #f0e9e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+/* ===============================
+   HOVER EFFECT
+================================ */
+.menu-card:hover {
+  background: #e9edf5;
+  border-color: #0753f7;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   ACTIVE (KEYBOARD FOCUS)
+================================ */
+.menu-card.active {
+  background: #dde6ff;
+  border-color: #0753f7;
+  box-shadow: 0 0 0 2px rgba(7, 83, 247, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   ICON (SYMBOL)
+================================ */
+.menu-icon {
+  font-size: 30px;   /* ⬅ reduced from 34px */
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+/* ===============================
+   EXIT ICON OVERRIDE
+================================ */
+.exit-icon {
+  font-size: 30px;      /* Bigger than normal icons */
+  font-weight: 700;     /* Makes ⎋ visually bold */
+  line-height: 1;
+}
+
+
+/* ===============================
+   LABEL
+================================ */
+.menu-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0e0f0f;
+}
+
+/* ===============================
+   DANGER (EXIT)
+================================ */
+.menu-card.danger {
+  border-color: #dc2626;
+  color: #f70909;
+  background: #fff5f5;
+}
+
+.menu-card.danger:hover {
+  background: #fee2e2;
+  border-color: #b91c1c;
+}
+
+/* ===============================
+   TOP ACTION BUTTONS
+================================ */
+.top-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #687e9c;
+  background: #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-button:hover {
+  background: #eef2ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* ===============================
+   DASHBOARD CONTAINER
+================================ */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* full viewport height */
+  overflow: hidden; /* prevent whole page scroll */
+  background: #313e6b;
+}
+
+
+
+/* ===============================
+   MAIN CONTENT
+================================ */
+.main-content {
+  flex-grow: 1;          /* fill remaining height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;      /* no overflow for container itself */
+}
+
+/* ===============================
+   CONTENT AREA (SCROLLABLE)
+================================ */
+.content-area {
+  flex-grow: 1;         /* fill space inside main-content */
+  overflow-y: auto;     /* vertical scroll */
+  padding: 15px;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+/* Frame */
+.submenu-frame.center-frame {
+  border: 3px solid #4e0ee6; /* distinct border */
+  border-radius: 15px;
+  padding: 20px;
+  width: 700px;          /* moderate rectangle width */
+  height: 380px;         /* fixed height */
+  background-color: #a06d6d;
+  margin: 15px auto;     /* center horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header with Close X */
+.submenu-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.submenu-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: transparent;
+  border: 2px solid red;     /* 🔴 red border */
+  color: red;                /* X in red */
+  font-size: 16px;
+
+  width: 32px;               /* control size */
+  height: 32px;
+  border-radius: 50%;        /* circle around X */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+
+
+
+/* Grid layout 3x3 */
+.sales-submenu.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 80px);
+  gap: 20px;
+  width: 90%;
+}
+
+
+/* Grid layout 3x2 */
+.sales-submenu.gridA-2x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 80px);
+  gap: 20px;
+  width: 90%;
+}
+
+
+
+/* Cards */
+.submenu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  width: 200px;          /* Set the desired width */
+  height: 90px;         /* Set the desired height */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===============================
+   Distinct colors for each card
+   =============================== */
+
+/* Existing cards */
+.card-1 { background-color: #66af69; } /* green */
+.card-2 { background-color: #7cb7e7; } /* blue */
+.card-3 { background-color: #d49c48; } /* orange */
+.card-4 { background-color: #a36aad; } /* purple */
+.card-5 { background-color: #e2857e; } /* red */
+.card-6 { background-color: #a5c0c4; } /* cyan */
+.card-7 { background-color: #6150a1; } /* cyan */
+.card-8 { background-color: #6d6060; } /* cyan */
+.card-9 { background-color: #472c2c; } /* cyan */
+
+/* New Sales Reports cards */
+
+
+
+
+/* Hover effect */
+.submenu-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+}
+
+/* Icon and label */
+.submenu-icon {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.submenu-label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+
+.disabled-card {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+
+/* Default submenu frame (Sales & Stock) */
+.submenu-frame {
+  width: 800px;
+  height: 500px; /* original size */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.sales-frame {
+  width: 700px !important;
+  height: 420px !important;
+}
+
+
+.purchase-frame {
+  width: 500px !important;
+  height: 350px !important;
+}
+
+.accounts-frame {
+  width: 700px !important;
+  height: 350px !important;
+}
+
+
+/* Stock submenu (3x2) */
+.stock-frame {
+  width: 700px;
+  height: 350px;
+  margin: 0 auto;             /* center frame horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* center vertically */
+  align-items: center;         /* center horizontally */
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Grid for cards inside Stock submenu */
+.stock-frame .sales-submenu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-items: center;       /* center each card horizontally in its column */
+  align-items: center;         /* center each card vertically */
+}

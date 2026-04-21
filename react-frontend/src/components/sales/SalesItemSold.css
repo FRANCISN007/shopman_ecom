@@ -1,0 +1,363 @@
+/* ===============================
+   SalesItemSold Container
+=============================== */
+.sales-item-sold-container {
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* ===============================
+   Title
+=============================== */
+.sales-item-sold-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ===============================
+   Filters
+=============================== */
+.sales-item-filters {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.sales-item-filters label {
+  font-weight: bold;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sales-item-filters input[type="date"],
+.sales-item-filters input[type="number"] {
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.sales-item-filters button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sales-item-filters button:hover {
+  background-color: #218838;
+}
+
+/* ===============================
+   Table Wrapper
+=============================== */
+.sales-item-table-wrapper {
+  overflow-x: auto;
+  border: 2px solid #28a745; /* green border like ListSales */
+  border-radius: 6px;
+  background-color: white;
+}
+
+/* ===============================
+   Table
+=============================== */
+.sales-item-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.sales-item-table th,
+.sales-item-table td {
+  padding: 0px 4px;          /* 🔥 reduced height */
+  text-align: left;
+  border: 1px solid #28a745;
+  font-size: 0.85rem;        /* slightly smaller text */
+  line-height: 1.2;          /* tighter rows */
+}
+
+
+.sales-item-table th {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===============================
+   Zebra Striping
+=============================== */
+.sales-item-table tbody tr:nth-child(odd) {
+  background-color: #e6f4ea; /* light green */
+}
+
+.sales-item-table tbody tr:nth-child(even) {
+  background-color: #f0faf5; /* lighter green */
+}
+
+/* ===============================
+   Loading / Empty Rows
+=============================== */
+.loading-cell,
+.empty-cell {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  padding: 20px;
+}
+
+/* ===============================
+   Error Text
+=============================== */
+.error-text {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #dc3545;
+}
+
+
+/* ===============================
+   Table Footer (TOTAL ROW)
+=============================== */
+.sales-item-table tfoot tr {
+  background-color: #c3e6cb; /* stronger green highlight */
+  font-weight: bold;
+}
+
+
+.text-left {
+  text-align: left;
+}
+
+
+.sales-item-table tfoot td {
+  border-top: 3px solid #155724;
+  padding: 4px 6px;
+  font-size: 1rem;
+}
+
+
+/* Align numeric totals properly */
+.sales-item-table tfoot td:nth-child(5),
+.sales-item-table tfoot td:nth-child(7) {
+  text-align: right;
+}
+
+/* Optional: make TOTAL label stand out */
+.sales-item-table tfoot td:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* ===================== EDIT MODAL PROFESSIONAL ===================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-card {
+  background: #f4f3f7;
+  padding: 15px 15px;
+  border-radius: 12px;
+  width: 450px;
+  max-width: 95%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #269941;
+  border-bottom: 1px solid #10eb43;
+  padding-bottom: 6px;
+}
+
+.modal-card input,
+.modal-card .react-select__control {
+  width: 100%;
+  padding: 4px 2px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+}
+
+.modal-card input:focus,
+.modal-card .react-select__control--is-focused {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
+  outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.modal-actions button {
+  padding: 7px 15px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-actions button:first-child {
+  background: #28a745;
+  color: white;
+}
+
+.modal-actions button:first-child:hover {
+  background: #218838;
+}
+
+.modal-actions button:last-child {
+  background: #dc3545;
+  color: white;
+}
+
+.modal-actions button:last-child:hover {
+  background: #c82333;
+}
+
+/* Optional animations */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes slideDown { from {transform: translateY(-20px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+
+
+.btn-print {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.btn-print:hover {
+  transform: scale(1.1);
+}
+
+
+/* ===============================
+   Product Search Dropdown (Filter / Edit)
+=============================== */
+.product-search-wrapper {
+  position: relative;
+  width: 190px; /* adjust as needed */
+}
+
+.product-search-wrapper input {
+  width: 100;
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid #c4aaaa;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.product-search-wrapper input:focus {
+  border-color: #67ac77;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+  outline: none;
+}
+
+.product-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #28a745;
+  border-top: none;
+  background: #e7dede;
+  z-index: 1000;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.product-search-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.product-search-item:hover,
+.product-search-item.active {
+  background-color: #28a745;
+  color: rgb(0, 0, 0);
+}
+
+.product-search-item:not(:last-child) {
+  border-bottom: 1px solid #cc9f9f;
+}
+
+/* Optional: smooth dropdown appearance */
+.product-search-dropdown {
+  animation: slideDown 0.15s ease-in-out;
+}
+
+/* Small responsive adjustment */
+@media (max-width: 600px) {
+  .product-search-wrapper {
+    width: 100%;
+  }
+}
+
+
+
+
+/* Close button at top-right corner */
+.sales-item-sold-container {
+  position: relative; /* needed for absolute positioning of close button */
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}

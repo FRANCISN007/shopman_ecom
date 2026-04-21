@@ -1,0 +1,127 @@
+/* ===============================
+   Container
+=============================== */
+.profit-loss-container {
+  padding: 15px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   Title
+=============================== */
+.profit-loss-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ===============================
+   Filters
+=============================== */
+.pl-filters {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.pl-filters label {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.pl-filters input {
+  margin-left: 5px;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pl-filters button {
+  padding: 6px 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pl-filters button:hover {
+  background-color: #218838;
+}
+
+/* ===============================
+   Table Wrapper
+=============================== */
+.table-wrapper {
+  border: 2px solid #28a745;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/* ===============================
+   Table
+=============================== */
+.pl-head th {
+  background: #28a745;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #28a745;
+}
+
+.pl-head th.amount {
+  text-align: right;
+}
+
+
+/* Section headers */
+.section-header td {
+  background-color: #e6f4ea;
+  font-weight: bold;
+}
+
+/* Indented rows */
+.indent {
+  padding-left: 25px !important;
+}
+
+/* Amount column */
+.amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Totals */
+.total-row td {
+  font-weight: bold;
+  background-color: #f0faf5;
+}
+
+/* Gross profit highlight */
+.highlight-row td {
+  font-weight: bold;
+  background-color: #d4edda;
+}
+
+/* Net profit */
+.net-profit-row td {
+  font-weight: bold;
+  background-color: #c3e6cb;
+  font-size: 1rem;
+}
+
+/* Status / Error */
+.status-text {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.error-text {
+  font-weight: bold;
+  color: #dc3545;
+  margin: 10px 0;
+}

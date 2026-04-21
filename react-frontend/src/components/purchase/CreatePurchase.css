@@ -1,0 +1,499 @@
+/* ===============================
+   MAIN CONTAINER
+================================= */
+.create-purchase-container {
+  max-width: 900px;
+  width: 95%;
+  margin: 20px auto;
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  position: relative;
+  color: #111827;
+
+overflow: visible !important;   /* 🔥 VERY IMPORTANT */
+}
+
+
+
+.create-purchase-container h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+/* ===============================
+   CLOSE BUTTON
+================================= */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ac4949;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #445f96;
+}
+
+/* ===============================
+   MESSAGE
+================================= */
+.message {
+  margin-bottom: 12px;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #eef4ff;
+  color: #1d4ed8;
+  font-weight: 500;
+}
+
+/* ===============================
+   TOP FORM GRID
+================================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* ===============================
+   PURCHASE ITEMS TABLE
+================================= */
+.purchase-items-table {
+  overflow: visible !important;   /* 🔥 force it */
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+
+
+.table-row {
+  position: relative;   /* ✅ allows dropdown positioning */
+  overflow: visible;    /* ✅ prevents clipping */
+}
+
+
+/* TABLE HEADER */
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.6fr 1.9fr 1.9fr 1.4fr 0.6fr; /* Barcode + Product + Qty + Unit + Total + Action */
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  background: #f3f4f6;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===============================
+   TABLE ROW
+================================= */
+.table-row {
+  display: grid;
+  grid-template-columns: 0.6fr 3fr 0.5fr 1.5fr 1.5fr 0.6fr; /* Barcode + Product + Qty + Unit + Total + Action */
+  gap: 2px;
+  padding: 6px 1px;
+  align-items: center; /* vertically center content */
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row input {
+  padding: 2px 1px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  height: 32px; /* ensure uniform height */
+  box-sizing: border-box;
+}
+
+/* Center text for quantity input */
+.table-row input.qty-input {
+  text-align: center;
+}
+
+/* Readonly fields */
+.table-row input[readonly] {
+  background: #f3f4f6;
+  color: #111827;
+  cursor: not-allowed;
+}
+
+
+
+
+.table-row input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.table-row input[readonly] {
+  background: #f3f4f6;
+  color: #111827;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   PRODUCT SEARCH DROPDOWN
+================================= */
+.product-search {
+  position: relative;
+  width: 100%;
+}
+
+.product-search input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+}
+
+.product-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.product-option:hover {
+  background: #f3f4f6;
+}
+
+/* ===============================
+   BUTTONS
+================================= */
+.add-row-btn {
+  margin-top: 10px;
+  background: #16a34a;
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-row-btn:hover {
+  background: #15803d;
+}
+
+.remove-btn {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 100%;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #1d4ed8;
+}
+
+/* ===============================
+   INVOICE TOTAL
+================================= */
+.invoice-total {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+  color: #000000;
+}
+
+
+/* ===============================
+   TOTAL INPUT (READONLY)
+================================= */
+.table-row input.total-input {
+  font-weight: 700;       /* Bold */
+  font-size: 15px;        /* Increase font size */
+  background: #f3f4f6;    /* Keep readonly style */
+  color: #111827;
+  text-align: left;      /* Align numbers to the right */
+}
+
+
+
+
+
+/* ===============================
+   TOP FORM GRID (ALL FIELDS)
+================================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* ===============================
+   VENDOR / DATE / INVOICE ROW
+================================= */
+.top-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.top-row .form-group {
+  flex: 1; /* each field takes equal space */
+  min-width: 0; /* allows shrinking on smaller screens */
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  .top-row {
+    flex-direction: column;
+  }
+}
+
+
+
+.product-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.product-search-wrapper input {
+  width: 100%;
+}
+
+/* 🔥 POS STYLE DROPDOWN */
+.product-search-dropdown {
+  position: absolute;
+  top: 100%;            /* directly below input */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 99999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* ITEMS */
+.product-search-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* HOVER LIKE POS */
+.product-search-item:hover {
+  background: #f5f5f5;
+}
+
+/* OPTIONAL: SCROLLBAR CLEAN */
+.product-search-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.product-search-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+
+
+/* ===============================
+   RESPONSIVENESS (SCOPED ONLY)
+================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .create-purchase-container {
+    padding: 15px;
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 0.8fr 2fr 0.8fr 1.2fr 1.2fr 0.6fr;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .create-purchase-container {
+    width: 100%;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .create-purchase-container h2 {
+    font-size: 18px;
+  }
+
+  /* 🔥 Make table scrollable instead of breaking */
+  .purchase-items-table {
+    overflow-x: auto !important;
+  }
+
+  .table-header,
+  .table-row {
+    min-width: 650px; /* forces horizontal scroll */
+  }
+
+  /* Improve spacing for touch */
+  .table-row input {
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .add-row-btn,
+  .submit-button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .remove-btn {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  /* Dropdown fix */
+  .product-dropdown,
+  .product-search-dropdown {
+    max-height: 160px;
+    font-size: 13px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  .create-purchase-container {
+    padding: 10px;
+  }
+
+  .table-header,
+  .table-row {
+    min-width: 700px; /* slightly wider for readability */
+  }
+
+  .invoice-total {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+  }
+}

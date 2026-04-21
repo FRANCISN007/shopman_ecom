@@ -1,0 +1,93 @@
+/* Page-level centering */
+.backup-container {
+  min-height: calc(100vh - 80px); /* adjust if you have a navbar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Actual card wrapper */
+.backup-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Heading */
+.backup-wrapper h2 {
+  margin-bottom: 15px;
+  color: #b96278;
+  text-align: center;
+}
+
+/* Card */
+.backup-card {
+  background: #f0eeee;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Fields */
+.backup-field {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.backup-field label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #0e0d0d;
+}
+
+.backup-field select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #cfc4c4;
+}
+
+/* Button */
+.backup-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #2d89ef;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.backup-btn:disabled {
+  background-color: #9dbcf2;
+  cursor: not-allowed;
+}
+
+/* Message */
+.backup-message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #2e7d32;
+  text-align: center;
+}
+
+
+.backup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #cc3333;
+}
+
+.backup-close:hover {
+  color: #000;
+}
+
+.backup-card {
+  position: relative; /* REQUIRED for close button */
+}

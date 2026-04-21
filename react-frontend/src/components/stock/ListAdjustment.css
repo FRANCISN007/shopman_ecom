@@ -1,0 +1,201 @@
+/* ===============================
+   Container
+=============================== */
+.list-adjustment-container {
+  position: relative;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+/* ===============================
+   Title
+=============================== */
+.list-adjustment-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ===============================
+   Table Wrapper
+=============================== */
+.table-wrapper {
+  overflow-x: auto;
+  border: 2px solid #28a745;
+  border-radius: 6px;
+  background-color: white;
+}
+
+/* ===============================
+   Table
+=============================== */
+.adjustment-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.adjustment-table th,
+.adjustment-table td {
+  padding: 4px 8px;
+  text-align: left;
+  font-size: 0.85rem;
+  border: 1px solid #28a745;
+}
+
+.adjustment-table th {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+/* Zebra striping */
+.adjustment-table tbody tr:nth-child(odd) {
+  background-color: #e6f4ea;
+}
+
+.adjustment-table tbody tr:nth-child(even) {
+  background-color: #f0faf5;
+}
+
+/* ===============================
+   Empty / Status Text
+=============================== */
+.empty-row {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.status-text {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.error-text {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #dc3545;
+}
+
+/* ===============================
+   Action Buttons
+=============================== */
+.action-cell {
+  text-align: center;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+  color: #dc3545;
+}
+
+/* ===============================
+   Close Button
+=============================== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}
+
+
+/* =======================
+   Date Filter Bar
+======================= */
+.filter-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+.filter-group input[type="date"] {
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  outline: none;
+}
+
+.filter-group input[type="date"]:focus {
+  border-color: #007bff;
+}
+
+/* =======================
+   Filter Button
+======================= */
+.filter-btn {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: #0056b3;
+}
+
+/* =======================
+   Mobile Responsiveness
+======================= */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+}

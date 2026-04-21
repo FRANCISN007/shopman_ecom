@@ -1,0 +1,160 @@
+/* ===============================
+   Container
+=============================== */
+.revenue-item-container.compact {
+  position: relative;
+  padding: 12px 14px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   Close Button (same behavior as sales)
+=============================== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}
+
+/* ===============================
+   Title
+=============================== */
+.revenue-item-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ===============================
+   Compact Form
+=============================== */
+.compact-form {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.compact-form input {
+  padding: 5px 6px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+}
+
+.compact-form button {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #28a745;
+  color: white;
+}
+
+.compact-form button:hover {
+  background-color: #218838;
+}
+
+.cancel-btn {
+  background-color: #6c757d !important;
+}
+
+/* ===============================
+   Table Wrapper
+=============================== */
+.table-wrapper {
+  overflow-x: auto;
+  border: 2px solid #28a745;
+  border-radius: 6px;
+  background-color: white;
+}
+
+/* ===============================
+   Table
+=============================== */
+.revenue-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+.revenue-table th,
+.revenue-table td {
+  padding: 4px 8px;
+  font-size: 1rem;
+  border: 1px solid #28a745;
+
+}
+
+.revenue-table th {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Zebra striping */
+.revenue-table tbody tr:nth-child(odd) {
+  background-color: #e6f4ea;
+}
+
+.revenue-table tbody tr:nth-child(even) {
+  background-color: #f0faf5;
+}
+
+/* ===============================
+   Action Icons
+=============================== */
+.action-cell {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 2px;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ===============================
+   Status / Error
+=============================== */
+.status-text {
+  margin: 6px;
+  font-weight: bold;
+}
+
+.error-text {
+  margin: 6px;
+  font-weight: bold;
+  color: #dc3545;
+}

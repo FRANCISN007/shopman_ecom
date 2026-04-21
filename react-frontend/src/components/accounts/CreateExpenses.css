@@ -1,0 +1,120 @@
+.expense-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center vertically */
+  padding: 10px;
+  z-index: 999;
+}
+
+.expense-container {
+  background: #eeeaea;
+  width: 100%;
+  max-width: 510px;
+  padding: 12px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+
+  /* 🔥 REMOVE SCROLL COMPLETELY */
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.expense-container h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+/* Messages */
+.message {
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.message.error {
+  background: #ffe2e2;
+  color: #b30000;
+}
+
+.message.success {
+  background: #e6fffa;
+  color: #065f46;
+}
+
+/* Form */
+.expense-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  padding: 5px;
+  font-size: 12px;
+  margin-top: 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Reduce textarea height */
+textarea {
+  resize: none;
+  min-height: 60px;
+}
+
+/* Submit button */
+button[type="submit"] {
+  margin-top: 10px;
+  padding: 7px;
+  font-size: 13px;
+  background: #1f2937;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
