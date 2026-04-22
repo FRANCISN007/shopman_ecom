@@ -62,7 +62,10 @@ def get_profit_and_loss(
                 sales_models.SaleItem.quantity * sales_models.SaleItem.selling_price
             ).label("revenue")
         )
-        .join(sales_models.Sale, sales_models.Sale.invoice_no == sales_models.SaleItem.sale_invoice_no)
+        .join(
+            sales_models.Sale,
+            sales_models.Sale.id == sales_models.SaleItem.sale_id
+        )
         .join(product_models.Product, product_models.Product.id == sales_models.SaleItem.product_id)
         .join(category_models.Category, category_models.Category.id == product_models.Product.category_id)
         .filter(
@@ -84,7 +87,7 @@ def get_profit_and_loss(
                 sales_models.SaleItem.quantity * sales_models.SaleItem.cost_price
             ).label("cos")
         )
-        .join(sales_models.Sale, sales_models.Sale.invoice_no == sales_models.SaleItem.sale_invoice_no)
+        .join(sales_models.Sale, sales_models.Sale.id == sales_models.SaleItem.sale_id)
         .filter(
             sales_models.Sale.sold_at >= start_dt,
             sales_models.Sale.sold_at <= end_dt,
